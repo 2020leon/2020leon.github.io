@@ -1,43 +1,43 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>/</loc>
+    <loc>https://2020leon.github.io/</loc>
     <lastmod>2020-07-26T13:30:00Z</lastmod>
   </url>
   <url>
-    <loc>/posts/ruby-triple-equals/</loc>
+    <loc>https://2020leon.github.io/posts/ruby-triple-equals/</loc>
     <lastmod>2020-07-24T04:53:26Z</lastmod>
   </url>
   <url>
-    <loc>/categories/</loc>
+    <loc>https://2020leon.github.io/categories/</loc>
     <lastmod>2020-07-24T04:53:26Z</lastmod>
   </url>
   <url>
-    <loc>/tags/operator/</loc>
+    <loc>https://2020leon.github.io/tags/operator/</loc>
     <lastmod>2020-07-24T04:53:26Z</lastmod>
   </url>
   <url>
-    <loc>/tags/ruby/</loc>
+    <loc>https://2020leon.github.io/tags/ruby/</loc>
     <lastmod>2020-07-24T04:53:26Z</lastmod>
   </url>
   <url>
-    <loc>/categories/ruby/</loc>
+    <loc>https://2020leon.github.io/categories/ruby/</loc>
     <lastmod>2020-07-24T04:53:26Z</lastmod>
   </url>
   <url>
-    <loc>/tags/</loc>
+    <loc>https://2020leon.github.io/tags/</loc>
     <lastmod>2020-07-24T04:53:26Z</lastmod>
   </url>
   <url>
-    <loc>/posts/</loc>
+    <loc>https://2020leon.github.io/posts/</loc>
     <lastmod>2020-07-24T04:53:26Z</lastmod>
   </url>
   <url>
-    <loc>/posts/ruby-comparison-methods/</loc>
+    <loc>https://2020leon.github.io/posts/ruby-comparison-methods/</loc>
     <lastmod>2020-07-24T04:29:00Z</lastmod>
   </url>
   <url>
-    <loc>/tags/equality/</loc>
+    <loc>https://2020leon.github.io/tags/equality/</loc>
     <lastmod>2020-07-24T04:29:00Z</lastmod>
   </url>
 </urlset>
