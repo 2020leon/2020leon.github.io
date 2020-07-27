@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ruby on L筆記</title>
+    <link>/tags/ruby/</link>
+    <description>Recent content in ruby on L筆記</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Fri, 24 Jul 2020 12:53:26 +0800</lastBuildDate>
+    
+	<atom:link href="/tags/ruby/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>[Ruby] 「===」和「==」一樣嗎？</title>
+      <link>/posts/ruby-triple-equals/</link>
+      <pubDate>Fri, 24 Jul 2020 12:53:26 +0800</pubDate>
+      
+      <guid>/posts/ruby-triple-equals/</guid>
+      <description>「三等號（===）」和「雙等號（==）」是許多Ruby初學者經常搞混的兩個運算子。一些類別會根據自己的需要而覆寫三等號。本篇會介紹三等號==</description>
+    </item>
+    
+    <item>
+      <title>[Ruby] ==、equal?、和eql?差在哪裡？</title>
+      <link>/posts/ruby-comparison-methods/</link>
+      <pubDate>Tue, 21 Jul 2020 23:01:12 +0800</pubDate>
+      
+      <guid>/posts/ruby-comparison-methods/</guid>
+      <description>寫程式時無可避免的就是兩個物件或變數是否相等，而Ruby提供一些方法來確認其相等性。 比較運算子 比較兩物件是否相等時可以使用雙等號（==），相</description>
+    </item>
+    
+  </channel>
+</rss>

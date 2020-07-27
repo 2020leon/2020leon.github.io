@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>operator on L筆記</title>
+    <link>/tags/operator/</link>
+    <description>Recent content in operator on L筆記</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Fri, 24 Jul 2020 12:53:26 +0800</lastBuildDate>
+    
+	<atom:link href="/tags/operator/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>[Ruby] 「===」和「==」一樣嗎？</title>
+      <link>/posts/ruby-triple-equals/</link>
+      <pubDate>Fri, 24 Jul 2020 12:53:26 +0800</pubDate>
+      
+      <guid>/posts/ruby-triple-equals/</guid>
+      <description>「三等號（===）」和「雙等號（==）」是許多Ruby初學者經常搞混的兩個運算子。一些類別會根據自己的需要而覆寫三等號。本篇會介紹三等號==</description>
+    </item>
+    
+  </channel>
+</rss>
