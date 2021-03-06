@@ -1,0 +1,1075 @@
+<?xml version="1.0" encoding="utf-8"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>L筆記</title><link>https://2020leon.github.io/</link><description/><generator>Hugo 0.81.0 https://gohugo.io/</generator><language>zh-Hant-TW</language><copyright>[CC BY-SA 3.0 TW](https://creativecommons.org/licenses/by-sa/3.0/tw/)</copyright><lastBuildDate>Sat, 06 Mar 2021 22:39:15 +0800</lastBuildDate><atom:link rel="self" type="application/rss+xml" href="https://2020leon.github.io/rss.xml"/><item><title>[VirtualBox] 自訂Windows 10解析度</title><link>https://2020leon.github.io/posts/virtualbox-custom-resolution/</link><guid isPermaLink="true">https://2020leon.github.io/posts/virtualbox-custom-resolution/</guid><pubDate>Sat, 06 Mar 2021 22:33:49 +0800</pubDate><copyright>[CC BY-SA 3.0 TW](https://creativecommons.org/licenses/by-sa/3.0/tw/)</copyright><description>&lt;p>VirtualBox當Guest OS是Windows 10時解析度預設只提供4:3可以選擇。在此紀錄如何自訂解析度。&lt;/p>
+&lt;h2 id="找到vboxmanage執行檔">找到&lt;code>VBoxManage&lt;/code>執行檔&lt;/h2>
+&lt;p>&lt;code>VBoxManage&lt;/code>的路徑在不同的Host OS中不盡相同。&lt;/p>
+&lt;h3 id="windows">Windows&lt;/h3>
+&lt;p>若在安裝VirtualBox時沒有特別設定，&lt;code>VBoxManage.exe&lt;/code>會在&lt;code>C:\Program Files\Oracle\VirtualBox&lt;/code>裡。切換至該資料夾以利稍後的操作。&lt;/p>
+&lt;pre>&lt;code class="language-dos" data-lang="dos">cd C:\Program Files\Oracle\VirtualBox
+&lt;/code>&lt;/pre>&lt;h3 id="linuxmacos">Linux/MacOS&lt;/h3>
+&lt;p>在安裝VirtualBox時會直接在&lt;code>$PATH&lt;/code>下安裝執行檔。&lt;/p>
+&lt;h2 id="解除解析度限制">解除解析度限制&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code class="language-sh" data-lang="sh">VBoxManage setextradata &lt;span class="s2">&amp;#34;YourMachineName&amp;#34;&lt;/span> GUI/MaxGuestResolution any
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>將&lt;code>&amp;quot;YourMachineName&amp;quot;&lt;/code>改成虛擬機的名稱，或是改成&lt;code>global&lt;/code>（不需引號）解除所有虛擬機的解析度限制。&lt;/p>
+&lt;h2 id="設定解析度">設定解析度&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code class="language-sh" data-lang="sh">VBoxManage setextradata &lt;span class="s2">&amp;#34;YourMachineName&amp;#34;&lt;/span> CustomVideoMode1 &lt;span class="s2">&amp;#34;WidthxHeightxBpp&amp;#34;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>將&lt;code>&amp;quot;WidthxHeightxBpp&amp;quot;&lt;/code>改成解析度，例如：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code class="language-sh" data-lang="sh">VBoxManage setextradata &lt;span class="s2">&amp;#34;Windows 10&amp;#34;&lt;/span> CustomVideoMode1 &lt;span class="s2">&amp;#34;1440x900x32&amp;#34;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>bpp為位元每像素（bits per pixel），不知道是什麼的可以參考&lt;a href="https://www.imagejoy.com/article/655">這篇&lt;/a>，大部分的電腦通常是32bbp。&lt;/p>
+&lt;p>接著再度打開虛擬機，至顯示設定，就可以設定成方才所設定的解析度了。&lt;/p>
+&lt;p>雖然本篇名為「Windows 10解析度」，但若其他Guest OS遇到無法設定解析度時亦可試試本篇的方法。&lt;/p>
+&lt;h2 id="參考資料">參考資料&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a href="https://ourcodeworld.com/articles/read/1298/how-to-run-a-virtual-machine-in-virtualbox-with-a-custom-resolution-3840x2160">How to run a virtual machine in VirtualBox with a custom resolution (3840x2160) | Our Code World&lt;/a>&lt;/li>
+&lt;/ul></description><category domain="https://2020leon.github.io/categories/virtualbox/">virtualbox</category><category domain="https://2020leon.github.io/tags/virtualbox/">virtualbox</category><category domain="https://2020leon.github.io/tags/resolution/">resolution</category><category domain="https://2020leon.github.io/tags/windows-10/">windows 10</category></item><item><title>[演算法] KMP演算法簡介</title><link>https://2020leon.github.io/posts/algorithm-kmp/</link><guid isPermaLink="true">https://2020leon.github.io/posts/algorithm-kmp/</guid><pubDate>Sun, 04 Oct 2020 21:34:38 +0800</pubDate><copyright>[CC BY-SA 3.0 TW](https://creativecommons.org/licenses/by-sa/3.0/tw/)</copyright><description>&lt;p>字串搜尋經常出現在日常生活中，因此優化後的字串搜尋演算法必然是大家所追求的目標，而&lt;strong>KMP演算法&lt;/strong>（Knuth–Morris–Pratt algorithm）便是其中之一。在此整理網路上關於KMP的資料。&lt;/p>
+&lt;h2 id="符號定義">符號定義&lt;/h2>
+&lt;p>字串搜尋便是在&lt;strong>文字材料&lt;/strong>（text）中找到一些&lt;strong>字詞&lt;/strong>（pattern）。因此定義&lt;code>T&lt;/code>代表要搜索的文章（字串），&lt;code>P&lt;/code>則代表使用者要找的字詞。&lt;/p>
+&lt;p>本文的所有字串都是由零開始的陣列。若&lt;code>P = &amp;quot;ALGORITHM&amp;quot;&lt;/code>，則&lt;code>P[1]&lt;/code>是&lt;code>L&lt;/code>。&lt;code>i&lt;/code>和&lt;code>j&lt;/code>分別代表&lt;code>T&lt;/code>和&lt;code>P&lt;/code>的索引。&lt;/p>
+&lt;p>&lt;code>P[0 ... j]&lt;/code>表示包含&lt;code>0&lt;/code>但不包含&lt;code>j&lt;/code>的字元，在數學上用區間表示即是&lt;code>[0,j)&lt;/code>。若&lt;code>P = &amp;quot;ALGORITHM&amp;quot;&lt;/code>，則&lt;code>P[2 ... 5] = &amp;quot;GOR&amp;quot;&lt;/code>。&lt;/p>
+&lt;h2 id="暴力法">暴力法&lt;/h2>
+&lt;p>&lt;code>T&lt;/code>和&lt;code>P&lt;/code>頭對頭（&lt;code>i = 0&lt;/code>、&lt;code>j = 0&lt;/code>），一次取一字一一比對。&lt;/p>
+&lt;ul>
+&lt;li>若&lt;code>T[i] == P[j]&lt;/code>，則&lt;code>i++&lt;/code>、&lt;code>j++&lt;/code>&lt;/li>
+&lt;li>若&lt;code>T[i] != P[j]&lt;/code>，則&lt;code>i = i - j + 1&lt;/code>、&lt;code>j = 0&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;p>時間複雜度&lt;strong>O(mn)&lt;/strong>，空間複雜度&lt;strong>O(1)&lt;/strong>。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;span class="lnt">29
+&lt;/span>&lt;span class="lnt">30
+&lt;/span>&lt;span class="lnt">31
+&lt;/span>&lt;span class="lnt">32
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code class="language-text" data-lang="text">T = ABCDAABCDABD
+P = ABCDABD
+----------------
+1.
+T = ABCDAABCDABD
+P = ABCDABD
+^^^^^X
+2.
+T = ABCDAABCDABD
+P = ABCDABD
+X
+3.
+T = ABCDAABCDABD
+P = ABCDABD
+X
+4.
+T = ABCDAABCDABD
+P = ABCDABD
+X
+5.
+T = ABCDAABCDABD
+P = ABCDABD
+^X
+6.
+T = ABCDAABCDABD
+P = ABCDABD
+^^^^^^#
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="改良">改良&lt;/h2>
+&lt;p>暴力法的精神便是逐一比對，但事實上不必如此。觀察上方第二至五步，若能一次性將&lt;code>P&lt;/code>移動至第五步的位置便能&lt;strong>減少挪動次數&lt;/strong>而增加比對效率，尤其&lt;code>T&lt;/code>為長字串時效果更為顯著。&lt;/p>
+&lt;p>第一步比對失敗時，&lt;code>j = 5&lt;/code>。我們發現，可以藉由預先分析&lt;code>P[0 ... 5] = &amp;quot;ABCDA&amp;quot;&lt;/code>（從&lt;code>P[0]&lt;/code>到第一步比對失敗&lt;strong>前&lt;/strong>的子字串）來決定&lt;code>P&lt;/code>要挪動多少。&lt;/p>
+&lt;p>接下來介紹實現此想法所需的前置作業。&lt;/p>
+&lt;h3 id="failure-function">Failure Function&lt;/h3>
+&lt;p>中文簡稱&lt;strong>F函數&lt;/strong>，又稱&lt;strong>prefix function&lt;/strong>、&lt;strong>border function&lt;/strong>。給定一字串，它便會輸出「&lt;strong>次長相同前綴後綴&lt;/strong>（longest proper prefix-suffix）」的長度。一個字串可能有不只一個「相同前綴後綴（prefix-suffix）」，而「最長相同前綴後綴」肯定是字串本身；「次長相同前綴後綴」便可顧名思義。&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>字串&lt;/th>
+&lt;th>相同前綴後綴&lt;/th>
+&lt;th>次長相同前綴後綴&lt;/th>
+&lt;th>F函數&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>ABCDE&lt;/code>&lt;/td>
+&lt;td>&lt;code>∅&lt;/code>、&lt;code>ABCDE&lt;/code>&lt;/td>
+&lt;td>&lt;code>∅&lt;/code>&lt;/td>
+&lt;td>0&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>ABCDA&lt;/code>&lt;/td>
+&lt;td>&lt;code>∅&lt;/code>、&lt;code>A&lt;/code>、&lt;code>ABCDA&lt;/code>&lt;/td>
+&lt;td>&lt;code>A&lt;/code>&lt;/td>
+&lt;td>1&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>ABCAB&lt;/code>&lt;/td>
+&lt;td>&lt;code>∅&lt;/code>、&lt;code>AB&lt;/code>、&lt;code>ABCAB&lt;/code>&lt;/td>
+&lt;td>&lt;code>AB&lt;/code>&lt;/td>
+&lt;td>2&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>ABCBA&lt;/code>&lt;/td>
+&lt;td>&lt;code>∅&lt;/code>、&lt;code>A&lt;/code>、&lt;code>ABCBA&lt;/code>&lt;/td>
+&lt;td>&lt;code>A&lt;/code>&lt;/td>
+&lt;td>1&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>AAAAA&lt;/code>&lt;/td>
+&lt;td>&lt;code>∅&lt;/code>、&lt;code>A&lt;/code>、&lt;code>AA&lt;/code>、&lt;code>AAA&lt;/code>、&lt;code>AAAA&lt;/code>、&lt;code>AAAAA&lt;/code>&lt;/td>
+&lt;td>&lt;code>AAAA&lt;/code>&lt;/td>
+&lt;td>4&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3 id="部分匹配表">部分匹配表&lt;/h3>
+&lt;p>我們為&lt;code>P&lt;/code>建立&lt;strong>部分匹配表&lt;/strong>（Partial match table）來決定比對失敗時所要挪動的幅度。在此以&lt;code>P = &amp;quot;ABCDABD&amp;quot;&lt;/code>為例。&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;code>j&lt;/code>&lt;/th>
+&lt;th>0&lt;/th>
+&lt;th>1&lt;/th>
+&lt;th>2&lt;/th>
+&lt;th>3&lt;/th>
+&lt;th>4&lt;/th>
+&lt;th>5&lt;/th>
+&lt;th>6&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>P[j]&lt;/code>&lt;/td>
+&lt;td>A&lt;/td>
+&lt;td>B&lt;/td>
+&lt;td>C&lt;/td>
+&lt;td>D&lt;/td>
+&lt;td>A&lt;/td>
+&lt;td>B&lt;/td>
+&lt;td>D&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>next[j]&lt;/code>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>當&lt;code>P[0]&lt;/code>比對失敗後，必須將&lt;code>P&lt;/code>右移才能繼續比對，因此設&lt;code>next[j] = -1&lt;/code>。&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;code>j&lt;/code>&lt;/th>
+&lt;th>0&lt;/th>
+&lt;th>1&lt;/th>
+&lt;th>2&lt;/th>
+&lt;th>3&lt;/th>
+&lt;th>4&lt;/th>
+&lt;th>5&lt;/th>
+&lt;th>6&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>P[j]&lt;/code>&lt;/td>
+&lt;td>A&lt;/td>
+&lt;td>B&lt;/td>
+&lt;td>C&lt;/td>
+&lt;td>D&lt;/td>
+&lt;td>A&lt;/td>
+&lt;td>B&lt;/td>
+&lt;td>D&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>next[j]&lt;/code>&lt;/td>
+&lt;td>-1&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>在&lt;code>j &amp;gt; 0&lt;/code>的情況下，&lt;code>next[j] = F(P[0 ... j])&lt;/code>。例如：&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>next[1]&lt;/code> = &lt;code>F(P[0 ... 1])&lt;/code> = &lt;code>F(&amp;quot;A&amp;quot;)&lt;/code> = &lt;code>len(&amp;quot;&amp;quot;)&lt;/code> = 0&lt;/li>
+&lt;li>&lt;code>next[5]&lt;/code> = &lt;code>F(P[0 ... 5])&lt;/code> = &lt;code>F(&amp;quot;ABCDA&amp;quot;)&lt;/code> = &lt;code>len(&amp;quot;A&amp;quot;)&lt;/code> = 1&lt;/li>
+&lt;li>&lt;code>next[6]&lt;/code> = &lt;code>F(P[0 ... 6])&lt;/code> = &lt;code>F(&amp;quot;ABCDAB&amp;quot;)&lt;/code> = &lt;code>len(&amp;quot;AB&amp;quot;)&lt;/code> = 2&lt;/li>
+&lt;/ul>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;code>j&lt;/code>&lt;/th>
+&lt;th>0&lt;/th>
+&lt;th>1&lt;/th>
+&lt;th>2&lt;/th>
+&lt;th>3&lt;/th>
+&lt;th>4&lt;/th>
+&lt;th>5&lt;/th>
+&lt;th>6&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>P[j]&lt;/code>&lt;/td>
+&lt;td>A&lt;/td>
+&lt;td>B&lt;/td>
+&lt;td>C&lt;/td>
+&lt;td>D&lt;/td>
+&lt;td>A&lt;/td>
+&lt;td>B&lt;/td>
+&lt;td>D&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>next[j]&lt;/code>&lt;/td>
+&lt;td>-1&lt;/td>
+&lt;td>0&lt;/td>
+&lt;td>0&lt;/td>
+&lt;td>0&lt;/td>
+&lt;td>0&lt;/td>
+&lt;td>1&lt;/td>
+&lt;td>2&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>其原理便是：當比對失敗時，部分匹配表使你可以直接從&lt;code>next[j]&lt;/code>開始繼續搜尋而避免「&lt;strong>挪動、比對、失敗&lt;/strong>」循環（暴力法第二到四步），便達成減少挪動字數的目的。&lt;/p>
+&lt;p>接著便利用&lt;code>next[j]&lt;/code>來搜尋字串：&lt;/p>
+&lt;ul>
+&lt;li>若&lt;code>T[i] == P[j]&lt;/code>，則&lt;code>i++&lt;/code>、&lt;code>j++&lt;/code>&lt;/li>
+&lt;li>若&lt;code>T[i] != P[j]&lt;/code>，則&lt;code>j = next[j]&lt;/code>
+&lt;ul>
+&lt;li>若&lt;code>j == -1&lt;/code>，則&lt;code>i++&lt;/code>、&lt;code>j++&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p>時間複雜度&lt;strong>O(m+n)&lt;/strong>，空間複雜度&lt;strong>O(n)&lt;/strong>。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code class="language-text" data-lang="text">T = ABCDAABCDABD
+P = ABCDABD
+----------------
+1.
+T = ABCDAABCDABD
+P = ABCDABD
+^^^^^X
+2.
+T = ABCDAABCDABD
+P = ABCDABD
+X
+3.
+T = ABCDAABCDABD
+P = ABCDABD
+^^^^^^#
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>此演算法衍生的另一個優點便是，不用每次都從&lt;code>P[0]&lt;/code>開始比較，因為F函數已經保證移動後「次長相同前綴後綴」的前綴部分和&lt;code>T&lt;/code>的部分相同，如上方的步驟二。&lt;/p>
+&lt;p>有文獻稱這種演算法為MP演算法（Morris–Pratt algorithm）。&lt;/p>
+&lt;h2 id="kmp演算法">KMP演算法&lt;/h2>
+&lt;p>觀察上面的演算法，在第一步遇到不匹配的字元&lt;code>P&lt;/code>便右移，第二步時&lt;code>P[1]&lt;/code>又不等於&lt;code>T[5]&lt;/code>，須再右移一次。為了使演算法更優化，這時便要藉由&lt;strong>優化&lt;/strong>&lt;code>next&lt;/code>來&lt;strong>避免連續挪移&lt;/strong>。&lt;/p>
+&lt;p>再以&lt;code>P = &amp;quot;ABCDABD&amp;quot;&lt;/code>為例並找出連續挪移的條件。&lt;code>P[0 ... 5] = &amp;quot;ABCDA&amp;quot;&lt;/code>的「次長相同前綴後綴」為&lt;code>P[0 ... 1] = P[4 ... 5] = &amp;quot;A&amp;quot;&lt;/code>，若&lt;code>P[0 .. 1]&lt;/code>和&lt;code>P[4 ... 5]&lt;/code>的&lt;strong>下一個字元&lt;/strong>相同（都是&lt;code>'B'&lt;/code>），則第一次移動後所比較的字元也會相同（&lt;code>'A' != 'B'&lt;/code>），因此&lt;code>P&lt;/code>必須再移動一次。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code class="language-text" data-lang="text">P = ABCDABD
+P[0 ... 5] = ABCDA
+!* !*
+--------------------
+&amp;#39;!&amp;#39; =&amp;gt; 次長相同前綴後綴
+&amp;#39;*&amp;#39; =&amp;gt; 次長相同前綴後綴的下一個字元
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;code>newNext&lt;/code>為&lt;code>next&lt;/code>的優化版，以實現「避免連續挪移」。&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;code>j&lt;/code>&lt;/th>
+&lt;th>0&lt;/th>
+&lt;th>1&lt;/th>
+&lt;th>2&lt;/th>
+&lt;th>3&lt;/th>
+&lt;th>4&lt;/th>
+&lt;th>5&lt;/th>
+&lt;th>6&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>P[j]&lt;/code>&lt;/td>
+&lt;td>A&lt;/td>
+&lt;td>B&lt;/td>
+&lt;td>C&lt;/td>
+&lt;td>D&lt;/td>
+&lt;td>A&lt;/td>
+&lt;td>B&lt;/td>
+&lt;td>D&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>next[j]&lt;/code>&lt;/td>
+&lt;td>-1&lt;/td>
+&lt;td>0&lt;/td>
+&lt;td>0&lt;/td>
+&lt;td>0&lt;/td>
+&lt;td>0&lt;/td>
+&lt;td>1&lt;/td>
+&lt;td>2&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>newNext[j]&lt;/code>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>定義&lt;code>newNext[0] = -1&lt;/code>，原因見上一節。若&lt;code>P[0 ... j]&lt;/code>的「次長相同前綴後綴」的前綴和後綴沒有相同的「下一個字元」，則&lt;code>newNext[j] = next[j]&lt;/code>。&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;code>j&lt;/code>&lt;/th>
+&lt;th>0&lt;/th>
+&lt;th>1&lt;/th>
+&lt;th>2&lt;/th>
+&lt;th>3&lt;/th>
+&lt;th>4&lt;/th>
+&lt;th>5&lt;/th>
+&lt;th>6&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>P[j]&lt;/code>&lt;/td>
+&lt;td>A&lt;/td>
+&lt;td>B&lt;/td>
+&lt;td>C&lt;/td>
+&lt;td>D&lt;/td>
+&lt;td>A&lt;/td>
+&lt;td>B&lt;/td>
+&lt;td>D&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>next[j]&lt;/code>&lt;/td>
+&lt;td>-1&lt;/td>
+&lt;td>0&lt;/td>
+&lt;td>0&lt;/td>
+&lt;td>0&lt;/td>
+&lt;td>0&lt;/td>
+&lt;td>1&lt;/td>
+&lt;td>2&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>newNext[j]&lt;/code>&lt;/td>
+&lt;td>-1&lt;/td>
+&lt;td>0&lt;/td>
+&lt;td>0&lt;/td>
+&lt;td>0&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>2&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>若有相同的下一個字元，則藉遞迴法使其移動時一次到位，即&lt;code>newNext[j] = newNext[next[j]]&lt;/code>。在本例中：&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;code>j&lt;/code>&lt;/th>
+&lt;th>4&lt;/th>
+&lt;th>5&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>P[0 ... j]&lt;/code>&lt;/td>
+&lt;td>&lt;code>ABCD&lt;/code>&lt;/td>
+&lt;td>&lt;code>ABCDA&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>次長相同前綴後綴的&lt;strong>前綴&lt;/strong>&lt;/td>
+&lt;td>&lt;code>P[0 ... 0]&lt;/code>&lt;/td>
+&lt;td>&lt;code>P[0 ... 1]&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>次長相同前綴後綴的&lt;strong>後綴&lt;/strong>&lt;/td>
+&lt;td>&lt;code>P[4 ... 4]&lt;/code>&lt;/td>
+&lt;td>&lt;code>P[4 ... 5]&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>相同的&lt;strong>下一個字元&lt;/strong>&lt;/td>
+&lt;td>&lt;code>A&lt;/code>&lt;/td>
+&lt;td>&lt;code>B&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>newNext[j]&lt;/code>&lt;/td>
+&lt;td>-1&lt;/td>
+&lt;td>0&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;blockquote>
+&lt;p>註：&lt;code>P[0 ... 4]&lt;/code>的次長前綴後綴為空，但其仍有相同的下一個字元。&lt;/p>
+&lt;/blockquote>
+&lt;p>將&lt;code>newNext[j]&lt;/code>填完：&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;code>j&lt;/code>&lt;/th>
+&lt;th>0&lt;/th>
+&lt;th>1&lt;/th>
+&lt;th>2&lt;/th>
+&lt;th>3&lt;/th>
+&lt;th>4&lt;/th>
+&lt;th>5&lt;/th>
+&lt;th>6&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>P[j]&lt;/code>&lt;/td>
+&lt;td>A&lt;/td>
+&lt;td>B&lt;/td>
+&lt;td>C&lt;/td>
+&lt;td>D&lt;/td>
+&lt;td>A&lt;/td>
+&lt;td>B&lt;/td>
+&lt;td>D&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>next[j]&lt;/code>&lt;/td>
+&lt;td>-1&lt;/td>
+&lt;td>0&lt;/td>
+&lt;td>0&lt;/td>
+&lt;td>0&lt;/td>
+&lt;td>0&lt;/td>
+&lt;td>1&lt;/td>
+&lt;td>2&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>newNext[j]&lt;/code>&lt;/td>
+&lt;td>-1&lt;/td>
+&lt;td>0&lt;/td>
+&lt;td>0&lt;/td>
+&lt;td>0&lt;/td>
+&lt;td>-1&lt;/td>
+&lt;td>0&lt;/td>
+&lt;td>2&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>接著便利用&lt;code>newNext[j]&lt;/code>來搜尋字串，規則同上方的改良版：&lt;/p>
+&lt;ul>
+&lt;li>若&lt;code>T[i] == P[j]&lt;/code>，則&lt;code>i++&lt;/code>、&lt;code>j++&lt;/code>&lt;/li>
+&lt;li>若&lt;code>T[i] != P[j]&lt;/code>，則&lt;code>j = newNext[j]&lt;/code>
+&lt;ul>
+&lt;li>若&lt;code>j == -1&lt;/code>，則&lt;code>i++&lt;/code>、&lt;code>j++&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p>時間複雜度&lt;strong>O(m+n)&lt;/strong>，空間複雜度&lt;strong>O(n)&lt;/strong>。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code class="language-text" data-lang="text">T = ABCDAABCDABD
+P = ABCDABD
+----------------
+1.
+T = ABCDAABCDABD
+P = ABCDABD
+^^^^^X
+2.
+T = ABCDAABCDABD
+P = ABCDABD
+^^^^^^#
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="參考資料">參考資料&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a href="https://en.wikipedia.org/wiki/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm">Knuth–Morris–Pratt algorithm - Wikipedia&lt;/a>&lt;/li>
+&lt;li>&lt;a href="http://web.ntnu.edu.tw/~algo/StringSearching.html">演算法筆記 - String Searching&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://www.evanlin.com/about-kmp/">[TIL] 有關字串搜尋的演算法_ KMP&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://www.geeksforgeeks.org/kmp-algorithm-for-pattern-searching/">KMP Algorithm for Pattern Searching - GeeksforGeeks&lt;/a>&lt;/li>
+&lt;/ul></description><category domain="https://2020leon.github.io/categories/algorithm/">algorithm</category><category domain="https://2020leon.github.io/tags/algorithm/">algorithm</category><category domain="https://2020leon.github.io/tags/string/">string</category></item><item><title>[交通] 新店到板橋怎麼去</title><link>https://2020leon.github.io/posts/transportation-xindian-banqiao/</link><guid isPermaLink="true">https://2020leon.github.io/posts/transportation-xindian-banqiao/</guid><pubDate>Sat, 05 Sep 2020 23:38:14 +0800</pubDate><copyright>[CC BY-SA 3.0 TW](https://creativecommons.org/licenses/by-sa/3.0/tw/)</copyright><description>&lt;p>&lt;a href="https://commons.wikimedia.org/wiki/File:Jingan_Station_(Circular_Line)_Track_2020-02-14.jpg" title="Foxy1219 / CC BY-SA (https://creativecommons.org/licenses/by-sa/4.0)">&lt;img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Jingan_Station_%28Circular_Line%29_Track_2020-02-14.jpg/512px-Jingan_Station_%28Circular_Line%29_Track_2020-02-14.jpg" alt="Jingan Station (Circular Line) Track 2020-02-14">&lt;/a>&lt;/p>
+&lt;p>自從臺北捷運&lt;strong>環狀線&lt;/strong>西環段於2020年1月31日通車後，&lt;strong>新店&lt;/strong>和&lt;strong>板橋&lt;/strong>之間的交通多了一項新選擇。從新店到板橋要怎麼搭最省時或省錢？直接實測！&lt;/p>
+&lt;h2 id="測試方法">測試方法&lt;/h2>
+&lt;h3 id="起終點">起終點&lt;/h3>
+&lt;ul>
+&lt;li>起點：&lt;a href="https://www.openstreetmap.org/node/1996853626">捷運新店區公所站（北新）&lt;/a>（公車站）&lt;/li>
+&lt;li>終點：&lt;a href="https://www.openstreetmap.org/node/4681583354">板橋車站地下一樓臺鐵入口&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h3 id="路線">路線&lt;/h3>
+&lt;ol>
+&lt;li>&lt;a href="https://2020leon.github.io/posts/transportation-xindian-banqiao/#%E6%8D%B7%E9%81%8B%E6%96%B0%E5%BA%97%E7%B7%9A%E3%80%81%E6%9D%BF%E5%8D%97%E7%B7%9A">捷運新店線、板南線&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://2020leon.github.io/posts/transportation-xindian-banqiao/#%E6%8D%B7%E9%81%8B%E6%96%B0%E5%BA%97%E7%B7%9A%E3%80%81%E7%92%B0%E7%8B%80%E7%B7%9A">捷運新店線、環狀線&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://2020leon.github.io/posts/transportation-xindian-banqiao/#930%E5%85%AC%E8%BB%8A">930公車&lt;/a>&lt;/li>
+&lt;/ol>
+&lt;h2 id="捷運新店線板南線">捷運新店線、板南線&lt;/h2>
+&lt;ul>
+&lt;li>測試日期：2020年8月13日&lt;/li>
+&lt;/ul>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>地點&lt;/th>
+&lt;th>時間&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>起點&lt;/td>
+&lt;td>17:26&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>捷運新店區公所站&lt;/td>
+&lt;td>17:29&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>捷運西門站&lt;/td>
+&lt;td>17:47&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>捷運板南線板橋站&lt;/td>
+&lt;td>18:01&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>終點&lt;/td>
+&lt;td>18:05&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>費時&lt;strong>39分鐘&lt;/strong>。基本上從新店區公所到西門都有位子坐，而西門到板橋通常沒位子坐。尖峰時段在西門轉車，運氣差的話要等兩班捷運才有空間可以擠上車。&lt;/p>
+&lt;h2 id="捷運新店線環狀線">捷運新店線、環狀線&lt;/h2>
+&lt;ul>
+&lt;li>測試日期：2020年8月20日&lt;/li>
+&lt;/ul>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>地點&lt;/th>
+&lt;th>時間&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>起點&lt;/td>
+&lt;td>17:27&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>捷運新店區公所站&lt;/td>
+&lt;td>17:29&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>捷運新店線大坪林站&lt;/td>
+&lt;td>17:37&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>捷運環狀線大坪林站&lt;/td>
+&lt;td>17:40&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>捷運環狀線板橋站&lt;/td>
+&lt;td>18:02&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>終點&lt;/td>
+&lt;td>18:08&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>費時&lt;strong>41分鐘&lt;/strong>。環狀線的搭乘人數比其他高運量路線相比略少，通常有位子坐。整個環狀線的乘車體驗就是煞煞停停，大概是為避免過彎時車速過快及保持車距等。&lt;/p>
+&lt;p>而從捷運環狀線板橋站到臺鐵板橋站據所知至少有兩條路可以走。一是從5號出口走地下道到車站本體，二是從4號出口走行人穿越道到車站本體。本次測試是經地下道到車站本體。&lt;/p>
+&lt;h2 id="930公車">930公車&lt;/h2>
+&lt;p>&lt;a href="http://www.sindianbus.com.tw/uploads/tadnews/image/930-1070719.jpg" title="新店客運">&lt;img src="http://www.sindianbus.com.tw/uploads/tadnews/image/930-1070719.jpg" alt="930" title="新店客運">&lt;/a>&lt;/p>
+&lt;ul>
+&lt;li>測試日期：2020年8月14日&lt;/li>
+&lt;/ul>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>地點&lt;/th>
+&lt;th>時間&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>起點&lt;/td>
+&lt;td>17:26&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>板橋車站（文化路）&lt;/td>
+&lt;td>18:17&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>板橋車站站體&lt;/td>
+&lt;td>18:21&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>終點&lt;/td>
+&lt;td>18:23&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>費時&lt;strong>57分鐘&lt;/strong>。當天是星期五，下午又有午後雷陣雨，無論是在大坪林、臺64線或是板橋市區都大塞車。後來又找了一天再試一次。&lt;/p>
+&lt;ul>
+&lt;li>測試日期：2020年8月29日&lt;/li>
+&lt;/ul>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>地點&lt;/th>
+&lt;th>時間&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>起點&lt;/td>
+&lt;td>17:15&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>板橋車站（文化路）&lt;/td>
+&lt;td>18:00&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>板橋車站站體&lt;/td>
+&lt;td>18:03&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>終點&lt;/td>
+&lt;td>18:05&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>費時&lt;strong>50分鐘&lt;/strong>。板橋的下班尖峰時間無論是晴是雨、是不是週五都會塞車，而且930在下交流道後會在市區繞一陣子才會到板橋車站，但有座位腿也比較不會痠。&lt;/p>
+&lt;h2 id="結論">結論&lt;/h2>
+&lt;p>就乘車時間而言，板南線與環狀線差異不大，930公車在尖峰時間明顯偏慢，不過如果要到板橋車站以前的站牌就可以免去在市區繞行的時間，或是在離峰時間搭930乘車時間也許不比捷運差。&lt;/p>
+&lt;p>就價格而言，截至2020年8月，捷運原價是&lt;strong>NT$35&lt;/strong>，公車原價是&lt;strong>NT$15&lt;/strong>，公車票價大勝捷運。&lt;/p>
+&lt;p>最終還是要看自己的需求。起終點只要差一些，通車成本就會差很多。&lt;/p></description><category domain="https://2020leon.github.io/categories/transportation/">transportation</category><category domain="https://2020leon.github.io/tags/%E6%8D%B7%E9%81%8B/">捷運</category><category domain="https://2020leon.github.io/tags/%E7%92%B0%E7%8B%80%E7%B7%9A/">環狀線</category><category domain="https://2020leon.github.io/tags/%E6%9D%BF%E6%A9%8B/">板橋</category><category domain="https://2020leon.github.io/tags/%E6%96%B0%E5%BA%97/">新店</category></item><item><title>[Hugo] 架站步驟分享</title><link>https://2020leon.github.io/posts/hugo-steps-share/</link><guid isPermaLink="true">https://2020leon.github.io/posts/hugo-steps-share/</guid><pubDate>Sun, 02 Aug 2020 00:48:31 +0800</pubDate><copyright>[CC BY-SA 3.0 TW](https://creativecommons.org/licenses/by-sa/3.0/tw/)</copyright><description>&lt;p>利用Hugo架網站其實不難（MacOS），只是若想要讓網站成為自己心目中的版面還要多花一些功夫就是了。Hugo官網上也有&lt;a href="https://gohugo.io/getting-started/quick-start/">簡單的教學&lt;/a>，讓使用者可以快速架設Hugo網站。&lt;/p>
+&lt;p>Windows作業系統可以參考&lt;a href="https://blog.yowko.com/windows-10-hugo/">這篇&lt;/a>。&lt;/p>
+&lt;h2 id="hugo簡介">Hugo簡介&lt;/h2>
+&lt;p>Hugo是由Go寫成的靜態網頁產生器（static site generator），網站主要內容以Markdown格式撰寫，經Hugo編譯成HTML後可供瀏覽器瀏覽，其最大的優點為建置速度相較於其他靜態網頁產生器（如Jekyll）快上許多，另外便是其英文教學文檔還算清楚。&lt;/p>
+&lt;h2 id="安裝hugo">安裝Hugo&lt;/h2>
+&lt;p>在MacOS或Linux環境下安裝相對簡單。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code class="language-sh" data-lang="sh">brew install hugo
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>不知道什麼是&lt;code>brew&lt;/code>的人可以參考Homebrew的&lt;a href="https://brew.sh/">官網&lt;/a>。&lt;/p>
+&lt;p>安裝後確認是否安裝成功：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code class="language-sh" data-lang="sh">$ hugo version
+Hugo Static Site Generator v0.74.3/extended darwin/amd64 BuildDate: unknown
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>版本號可能會不一樣，只要不要輸出錯誤訊息就好了。&lt;/p>
+&lt;h2 id="建立新網站">建立新網站&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code class="language-sh" data-lang="sh">hugo new site my_site
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;code>my_site&lt;/code>是專案資料夾的名稱，可以自己決定。&lt;/p>
+&lt;h2 id="加入主題">加入主題&lt;/h2>
+&lt;p>Hugo沒有預設主題，必須要加入主題才能使網站運作。Hugo蒐集了許多的&lt;a href="https://themes.gohugo.io/">主題&lt;/a>（theme），可以選擇自己喜歡的主題下載。這邊以Axiom為例。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code class="language-sh" data-lang="sh">&lt;span class="nb">cd&lt;/span> my_site
+git init
+git submodule add https://github.com/marketempower/axiom.git themes/axiom
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>如果不想用&lt;code>git&lt;/code>的話，也可以直接去GitHub下載整個專案，並放置在&lt;code>themes&lt;/code>資料夾中。&lt;/p>
+&lt;p>如果想要以某個主題為基礎來創建新主題，也可以直接下載或以&lt;code>git clone&lt;/code>、&lt;code>git subtree&lt;/code>的方式處理。官方的建議是用&lt;code>git submodule&lt;/code>。&lt;/p>
+&lt;p>如果確定要用該主題，可以在配置檔&lt;code>config.toml&lt;/code>加入&lt;code>theme = &amp;quot;axiom&amp;quot;&lt;/code>：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code class="language-sh" data-lang="sh">&lt;span class="nb">echo&lt;/span> &lt;span class="s1">&amp;#39;theme = &amp;#34;axiom&amp;#34;&amp;#39;&lt;/span> &amp;gt;&amp;gt; config.toml
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>或著可以在&lt;a href="https://2020leon.github.io/posts/hugo-steps-share/#%E9%A0%90%E8%A6%BD">預覽&lt;/a>階段指定主題。&lt;/p>
+&lt;p>通常每個主題都會附上範例網頁，部分主題還會有說明文檔，可以各主題的範例網頁做為選擇的參考。&lt;/p>
+&lt;h2 id="新增頁面">新增頁面&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code class="language-sh" data-lang="sh">hugo new posts/my-first-post.md
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Hugo會在&lt;code>content&lt;/code>資料夾下建立&lt;code>posts/my-first-post.md&lt;/code>，打開後會發現裡面有關於頁面建立時間的資訊，可以在其下方隨意加入一些內容。&lt;/p>
+&lt;h2 id="預覽">預覽&lt;/h2>
+&lt;p>開啟Hugo server便可預覽目前的成果：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code class="language-sh" data-lang="sh">hugo server -D
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;code>-D&lt;/code>表示預覽所有非草稿及草稿（標註&lt;code>draft = true&lt;/code>）頁面。如果沒在&lt;code>config.toml&lt;/code>加入&lt;code>theme = &amp;quot;axiom&amp;quot;&lt;/code>，可以在開啟server時指定主題：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code class="language-sh" data-lang="sh">hugo server -t axiom
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>接著在任何瀏覽器輸入&lt;a href="http://localhost:1313/">http://localhost:1313/&lt;/a>以預覽網站；在終端機按&lt;code>Ctrl+C&lt;/code>便可關閉server。&lt;/p>
+&lt;p>在預覽過程中可能會發現和主題作者所提供的範例頁面有所出入（某部分無法順利顯示等），這便要視各主題有沒有要求任何必要變數使模板順利運作。如果原作者有提供說明文檔或範例頁面的原始碼，就可以藉此推敲出其中的端倪。&lt;/p>
+&lt;h2 id="建立靜態網頁">建立靜態網頁&lt;/h2>
+&lt;p>在所有設定（配置檔內容、草稿與否等）都配置好的情況下便可直接執行以下指令：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code class="language-sh" data-lang="sh">hugo
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Hugo會建立&lt;code>public&lt;/code>目錄，其內容包括靜態網頁所需的HTML、CSS、JS檔。&lt;code>hugo&lt;/code>指令亦可藉flags（&lt;code>-D&lt;/code>、&lt;code>-t&lt;/code>等）輔助配置。&lt;/p>
+&lt;h2 id="參考資料">參考資料&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a href="https://gohugo.io/getting-started/quick-start/">Quick Start _ Hugo&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://carsonwah.github.io/15213187969126.html">透過Hugo快速建置個人Blog - Carson&amp;rsquo;s Tech Note&lt;/a>&lt;/li>
+&lt;/ul></description><category domain="https://2020leon.github.io/categories/hugo/">hugo</category><category domain="https://2020leon.github.io/tags/hugo/">hugo</category><category domain="https://2020leon.github.io/tags/blog/">blog</category><category domain="https://2020leon.github.io/tags/site/">site</category></item><item><title>[Ruby] 「===」和「==」一樣嗎？</title><link>https://2020leon.github.io/posts/ruby-triple-equals/</link><guid isPermaLink="true">https://2020leon.github.io/posts/ruby-triple-equals/</guid><pubDate>Fri, 24 Jul 2020 12:53:26 +0800</pubDate><copyright>[CC BY-SA 3.0 TW](https://creativecommons.org/licenses/by-sa/3.0/tw/)</copyright><description>&lt;p>「&lt;strong>三等號&lt;/strong>（&lt;code>===&lt;/code>）」和「雙等號（&lt;code>==&lt;/code>）」是許多Ruby初學者經常搞混的兩個運算子。一些類別會根據自己的需要而覆寫三等號。本篇會介紹三等號&lt;code>===&lt;/code>的用法。&lt;/p>
+&lt;h2 id="物件相等性">物件相等性&lt;/h2>
+&lt;p>三等號只有在&lt;code>Object#===&lt;/code>時與&lt;code>Object#==&lt;/code>相等。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code class="language-ruby" data-lang="ruby">&lt;span class="n">s1&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;apple&amp;#34;&lt;/span>
+&lt;span class="n">s2&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;apple&amp;#34;&lt;/span>
+&lt;span class="n">s1&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="n">s2&lt;/span> &lt;span class="c1"># =&amp;gt; true&lt;/span>
+&lt;span class="n">s1&lt;/span> &lt;span class="o">===&lt;/span> &lt;span class="n">s2&lt;/span> &lt;span class="c1"># =&amp;gt; true&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="型態匹配">型態匹配&lt;/h2>
+&lt;p>&lt;code>Module&lt;/code>類別覆寫了三等號，使其可以確認物件的型態。例如：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code class="language-ruby" data-lang="ruby">&lt;span class="mi">3&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">is_a?&lt;/span> &lt;span class="nb">Integer&lt;/span> &lt;span class="c1"># =&amp;gt; true&lt;/span>
+&lt;span class="nb">Integer&lt;/span> &lt;span class="o">===&lt;/span> &lt;span class="mi">3&lt;/span> &lt;span class="c1"># =&amp;gt; true&lt;/span>
+&lt;span class="s2">&amp;#34;apple&amp;#34;&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">is_a?&lt;/span> &lt;span class="nb">Integer&lt;/span> &lt;span class="c1"># =&amp;gt; false&lt;/span>
+&lt;span class="nb">Integer&lt;/span> &lt;span class="o">===&lt;/span> &lt;span class="s2">&amp;#34;apple&amp;#34;&lt;/span> &lt;span class="c1"># =&amp;gt; false&lt;/span>
+&lt;span class="no">Module&lt;/span> &lt;span class="o">===&lt;/span> &lt;span class="no">Object&lt;/span> &lt;span class="c1"># =&amp;gt; true&lt;/span>
+&lt;span class="no">Object&lt;/span> &lt;span class="o">===&lt;/span> &lt;span class="no">Module&lt;/span> &lt;span class="c1"># =&amp;gt; true&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="範圍匹配">範圍匹配&lt;/h2>
+&lt;p>&lt;code>Range&lt;/code>類別亦覆寫了三等號，使其可以確認物件是否在範圍內。例如：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code class="language-ruby" data-lang="ruby">&lt;span class="p">(&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="o">...&lt;/span>&lt;span class="mi">3&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">include?&lt;/span> &lt;span class="mi">0&lt;/span> &lt;span class="c1"># =&amp;gt; true&lt;/span>
+&lt;span class="p">(&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="o">...&lt;/span>&lt;span class="mi">3&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="o">===&lt;/span> &lt;span class="mi">0&lt;/span> &lt;span class="c1"># =&amp;gt; true&lt;/span>
+&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;a&amp;#34;&lt;/span>&lt;span class="o">...&lt;/span>&lt;span class="s2">&amp;#34;z&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">include?&lt;/span> &lt;span class="s2">&amp;#34;z&amp;#34;&lt;/span> &lt;span class="c1"># =&amp;gt; false&lt;/span>
+&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;a&amp;#34;&lt;/span>&lt;span class="o">...&lt;/span>&lt;span class="s2">&amp;#34;z&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="o">===&lt;/span> &lt;span class="s2">&amp;#34;z&amp;#34;&lt;/span> &lt;span class="c1"># =&amp;gt; false&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="字串匹配">字串匹配&lt;/h2>
+&lt;p>&lt;code>Regexp&lt;/code>類別也覆寫了三等號，使其可以確認字串是否符合正規表示式（Regular Expression）。例如：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code class="language-ruby" data-lang="ruby">&lt;span class="sr">/a+/&lt;/span> &lt;span class="o">=~&lt;/span> &lt;span class="s2">&amp;#34;apple&amp;#34;&lt;/span> &lt;span class="c1"># =&amp;gt; 0&lt;/span>
+&lt;span class="sr">/a+/&lt;/span> &lt;span class="o">===&lt;/span> &lt;span class="s2">&amp;#34;apple&amp;#34;&lt;/span> &lt;span class="c1"># =&amp;gt; true&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="proccall">Proc#call&lt;/h2>
+&lt;p>若左手邊是&lt;code>Proc&lt;/code>類別的物件，則其功能等同於&lt;code>Proc#call&lt;/code>。例如：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code class="language-ruby" data-lang="ruby">&lt;span class="n">cube&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="no">Proc&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">new&lt;/span> &lt;span class="p">{&lt;/span> &lt;span class="o">|&lt;/span>&lt;span class="n">x&lt;/span>&lt;span class="o">|&lt;/span> &lt;span class="n">x&lt;/span> &lt;span class="o">**&lt;/span> &lt;span class="mi">3&lt;/span> &lt;span class="p">}&lt;/span>
+&lt;span class="n">cube&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">call&lt;/span> &lt;span class="mi">3&lt;/span> &lt;span class="c1"># =&amp;gt; 27&lt;/span>
+&lt;span class="n">cube&lt;/span> &lt;span class="o">===&lt;/span> &lt;span class="mi">3&lt;/span> &lt;span class="c1"># =&amp;gt; 27&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="case-equality-operator">Case Equality Operator&lt;/h2>
+&lt;p>三等號有一個名稱叫「Case Equality Operator」。在&lt;code>case...when...else&lt;/code>中，&lt;code>when&lt;/code>便會呼叫&lt;code>===&lt;/code>來匹配，使程式碼更簡潔。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code class="language-ruby" data-lang="ruby">&lt;span class="k">case&lt;/span> &lt;span class="n">score&lt;/span>
+&lt;span class="k">when&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="o">...&lt;/span>&lt;span class="mi">60&lt;/span>
+&lt;span class="s2">&amp;#34;failed&amp;#34;&lt;/span>
+&lt;span class="k">when&lt;/span> &lt;span class="mi">60&lt;/span>&lt;span class="o">..&lt;/span>&lt;span class="mi">100&lt;/span>
+&lt;span class="s2">&amp;#34;passed&amp;#34;&lt;/span>
+&lt;span class="k">else&lt;/span>
+&lt;span class="s2">&amp;#34;wrong score&amp;#34;&lt;/span>
+&lt;span class="k">end&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="整理">整理&lt;/h2>
+&lt;p>以下整理各類三等號的等同方法。&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>類&lt;/th>
+&lt;th>方法&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>Object&lt;/code>&lt;/td>
+&lt;td>&lt;code>#==&lt;/code>, &lt;code>#eql?&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>Module&lt;/code>&lt;/td>
+&lt;td>&lt;code>#is_a?&lt;/code>, &lt;code>#kind_of?&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>Range&lt;/code>&lt;/td>
+&lt;td>&lt;code>#include?&lt;/code>, &lt;code>#member?&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>Regexp&lt;/code>&lt;/td>
+&lt;td>(&lt;code>#=~&lt;/code>)（不完全相同）&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>Proc&lt;/code>&lt;/td>
+&lt;td>&lt;code>#call&lt;/code>, &lt;code>#yield&lt;/code>, &lt;code>#[]&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h2 id="參考資料">參考資料&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a href="https://ruby-doc.org/core-2.6.3/Object.html">Class_ Object (Ruby 2.6.3)&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://ruby-doc.org/core-2.5.3/Module.html">Class_ Module (Ruby 2.5.3)&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://ruby-doc.org/core-2.7.1/Range.html">Class_ Range (Ruby 2.7.1)&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://ruby-doc.org/core-2.7.1/Regexp.html">Class_ Regexp (Ruby 2.7.1)&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://ruby-doc.org/core-2.7.1/Proc.html">Class_ Proc (Ruby 2.7.1)&lt;/a>&lt;/li>
+&lt;/ul></description><category domain="https://2020leon.github.io/categories/ruby/">ruby</category><category domain="https://2020leon.github.io/tags/ruby/">ruby</category><category domain="https://2020leon.github.io/tags/operator/">operator</category></item><item><title>[Ruby] ==、equal?、和eql?差在哪裡？</title><link>https://2020leon.github.io/posts/ruby-comparison-methods/</link><guid isPermaLink="true">https://2020leon.github.io/posts/ruby-comparison-methods/</guid><pubDate>Tue, 21 Jul 2020 23:01:12 +0800</pubDate><copyright>[CC BY-SA 3.0 TW](https://creativecommons.org/licenses/by-sa/3.0/tw/)</copyright><description>&lt;p>寫程式時無可避免的就是兩個物件或變數是否相等，而Ruby提供一些方法來確認其相等性。&lt;/p>
+&lt;h2 id="比較運算子">比較運算子&lt;/h2>
+&lt;p>比較兩物件是否相等時可以使用&lt;strong>雙等號&lt;/strong>（&lt;code>==&lt;/code>），相等時返回&lt;code>true&lt;/code>，反之則返回&lt;code>false&lt;/code>。不等於則使用不等於運算子（&lt;code>!=&lt;/code>）。通常實作自定義類別時會覆寫這兩個方法。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;span class="lnt">9
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code class="language-ruby" data-lang="ruby">&lt;span class="n">s1&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;apple&amp;#34;&lt;/span>
+&lt;span class="n">s2&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;apple&amp;#34;&lt;/span>
+&lt;span class="n">s1&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="n">s2&lt;/span> &lt;span class="c1"># =&amp;gt; true&lt;/span>
+&lt;span class="n">s1&lt;/span> &lt;span class="o">!=&lt;/span> &lt;span class="n">s2&lt;/span> &lt;span class="c1"># =&amp;gt; false&lt;/span>
+&lt;span class="n">a1&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="o">[&lt;/span>&lt;span class="s2">&amp;#34;apple&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s2">&amp;#34;banana&amp;#34;&lt;/span>&lt;span class="o">]&lt;/span>
+&lt;span class="n">a2&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="o">[&lt;/span>&lt;span class="s2">&amp;#34;apple&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s2">&amp;#34;banana&amp;#34;&lt;/span>&lt;span class="o">]&lt;/span>
+&lt;span class="n">a1&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="n">a2&lt;/span> &lt;span class="c1"># =&amp;gt; true&lt;/span>
+&lt;span class="n">a1&lt;/span> &lt;span class="o">!=&lt;/span> &lt;span class="n">a2&lt;/span> &lt;span class="c1"># =&amp;gt; false&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>不同型態的數字也可以使用雙等號。例如：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code class="language-ruby" data-lang="ruby">&lt;span class="n">i&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">1&lt;/span>
+&lt;span class="n">f&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">1&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="mi">0&lt;/span>
+&lt;span class="n">i&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="n">f&lt;/span> &lt;span class="c1"># =&amp;gt; true&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="equal">equal?&lt;/h2>
+&lt;p>&lt;strong>&lt;code>equal?&lt;/code>方法&lt;/strong>比較兩個變數是否參考至同一物件，因此在實作自定義類別時不應覆寫&lt;code>equal?&lt;/code>方法。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code class="language-ruby" data-lang="ruby">&lt;span class="n">s1&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;apple&amp;#34;&lt;/span>
+&lt;span class="n">s2&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;apple&amp;#34;&lt;/span>
+&lt;span class="n">s1&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">object_id&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="n">s2&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">object_id&lt;/span> &lt;span class="c1"># =&amp;gt; false&lt;/span>
+&lt;span class="n">s1&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">equal?&lt;/span> &lt;span class="n">s2&lt;/span> &lt;span class="c1"># =&amp;gt; false&lt;/span>
+&lt;span class="n">s2&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">s1&lt;/span>
+&lt;span class="n">s1&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">object_id&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="n">s2&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">object_id&lt;/span> &lt;span class="c1"># =&amp;gt; true&lt;/span>
+&lt;span class="n">s1&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">equal?&lt;/span> &lt;span class="n">s2&lt;/span> &lt;span class="c1"># =&amp;gt; true&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="eql">eql?&lt;/h2>
+&lt;p>&lt;strong>&lt;code>eql?&lt;/code>方法&lt;/strong>比較兩物件的雜湊值（hash value）是否相等。對於&lt;code>Object&lt;/code>類別的物件而言，&lt;code>eql?&lt;/code>和&lt;code>==&lt;/code>是相同的。通常在實作自定義類別時，亦會使&lt;code>eql?&lt;/code>和&lt;code>==&lt;/code>的返回值相等以保持這樣的慣例。&lt;/p>
+&lt;p>&lt;code>Numeric&lt;/code>類別則是其中的一個例外。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code class="language-ruby" data-lang="ruby">&lt;span class="mi">1&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="mi">1&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="mi">0&lt;/span> &lt;span class="c1"># =&amp;gt; true&lt;/span>
+&lt;span class="mi">1&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">hash&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="mi">1&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">hash&lt;/span> &lt;span class="c1"># =&amp;gt; false&lt;/span>
+&lt;span class="mi">1&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">eql?&lt;/span> &lt;span class="mi">1&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="mi">0&lt;/span> &lt;span class="c1"># =&amp;gt; false&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="那呢">那===呢&lt;/h2>
+&lt;p>&lt;code>Object#===&lt;/code>與&lt;code>==&lt;/code>同功能，其子類別會依據需求而覆寫此方法，&lt;a href="https://2020leon.github.io/posts/ruby-triple-equals">下一篇&lt;/a>再詳細說明。&lt;/p>
+&lt;h2 id="參考資料">參考資料&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a href="https://ruby-doc.org/core-2.6.3/BasicObject.html">Class_ BasicObject (Ruby 2.6.3)&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://medium.com/@khalidh64/difference-between-eql-equal-in-ruby-2ffa7f073532">Difference Between ==, eql_, equal_ in ruby _ by Khalidh Sd _ Medium&lt;/a>&lt;/li>
+&lt;/ul></description><category domain="https://2020leon.github.io/categories/ruby/">ruby</category><category domain="https://2020leon.github.io/tags/ruby/">ruby</category><category domain="https://2020leon.github.io/tags/equality/">equality</category></item></channel></rss>
